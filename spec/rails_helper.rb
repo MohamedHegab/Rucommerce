@@ -22,6 +22,8 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
+  config.include RequestSpecHelper, type: :request
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
