@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_department
-  before_action :set_product, only: [:show, :update, :destroy]
+  before_action :set_product, only: [:show, :update, :destroy, :assign_promotion]
 
   # GET /products
   def index
@@ -29,6 +29,11 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     head :no_content
+  end
+
+  def assign_promotion
+    promotion = Promotion.find(params[:promotion_id])
+    @product.promotions << promotion if promotion
   end
 
   private

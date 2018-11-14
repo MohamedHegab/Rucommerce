@@ -4,6 +4,10 @@ class Promotion < ApplicationRecord
   validates_numericality_of :percent, greater_than_or_equal_to: 0
   validate :end_date_is_after_start_date
 
+  def self.active_promotion
+    where()
+  end
+
   private
 
   def end_date_is_after_start_date
