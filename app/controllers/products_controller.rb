@@ -32,8 +32,7 @@ class ProductsController < ApplicationController
   end
 
   def assign_promotion
-    promotion = Promotion.find(params[:promotion_id])
-    @product.promotions << promotion if promotion
+    json_response(@product) if @product.assign(params[:promotion_id])
   end
 
   private
